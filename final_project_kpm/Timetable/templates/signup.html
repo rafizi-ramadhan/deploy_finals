@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'log.css' %}">
+    <title>Sign Up</title>
+</head>
+<style>
+    body {
+      background-image: url("{% static 'img5.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+<body>
+    <center>
+    <body>
+        <div class="waviy">
+          <span style="--i:1">k</span>
+          <span style="--i:2">o</span>
+          <span style="--i:3">l</span>
+          <span style="--i:4">e</span>
+          <span style="--i:5">j</span>&nbsp&nbsp
+
+          <span style="--i:6">p</span>
+          <span style="--i:7">r</span>
+          <span style="--i:8">o</span>
+          <span style="--i:1">f</span>
+          <span style="--i:2">e</span>
+          <span style="--i:3">s</span>
+          <span style="--i:4">i</span>
+          <span style="--i:5">o</span>
+          <span style="--i:6">n</span>
+          <span style="--i:7">a</span>
+          <span style="--i:8">l</span>&nbsp&nbsp
+
+          <span style="--i:1">m</span>
+          <span style="--i:2">a</span>
+          <span style="--i:3">r</span>
+          <span style="--i:4">a</span>&nbsp&nbsp
+
+          <span style="--i:5">b</span>
+          <span style="--i:6">e</span>
+          <span style="--i:7">r</span>
+          <span style="--i:8">a</span>
+          <span style="--i:1">n</span>
+          <span style="--i:2">a</span>
+          <span style="--i:3">n</span>
+          <span style="--i:4">g</span>
+         </div>
+       </body><br>
+    <div class="box">
+		<form autocomplete="off">
+            <h2>Sign Up</h2>
+            
+            <form action="{% url 'signup' %}" method="get">
+                {% csrf_token %}
+			<div class="inputBox">
+                <label for='s_id'><span>Student ID</span></label>
+                <input type="text" name='studentID' id='s_id' required>
+				<i></i>
+			</div>
+            <div class="inputBox">
+				<input type="text" name='studentName' id='s_name' required>
+				<label for='s_name'><span>Student Name</span></label>
+				<i></i>
+			</div>
+			<div class="inputBox">
+				<input type="password" name='password' id='s_pass' required>
+				<label for='s_pass'><span>Password</span></label>
+				<i></i>
+            </div>
+            <div class="links">
+                <input type="submit" value="Sign Up"></input>
+			</div>
+        </form>
+        </form>
+    </div>
+</center>
+<style>
+    body{
+    background-color :aquamarine;
+    font-size: 24px;}
+</style>
+</body>
+</html>

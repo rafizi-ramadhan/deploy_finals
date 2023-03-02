@@ -1,0 +1,73 @@
+
+
+.container {
+
+    width:20px;
+
+    position: relative;
+
+}
+
+.click{
+
+    background-color: #f85f73;
+
+}
+
+.click:hover {
+
+    background-color: #B71C1C;
+
+}
+
+.click,.links {
+
+    padding: 5px;
+
+    font-size: 1.2em;
+
+    font-family: futura Md BT;
+
+    border: none;
+
+    outline: none;
+
+    width:20px;
+
+    color:#fff;
+
+    transition: 0.7s;
+
+}
+
+.list {
+
+    position: absolute;
+
+    transform: scaleY(0);
+
+    transform-origin: top;
+
+    transition: 0.7;
+
+}
+
+.newlist {
+
+    transform: scaleY(1);
+
+}
+
+.links {
+
+    background-color: #283c63;
+
+}
+
+.links:hover {
+
+    background-color: #01579B;
+
+    transform: scale(1.1);
+
+}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=CpCourse">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
+    <link rel="stylesheet" href="{% static 'table.css' %}">
+    <link rel="stylesheet" href="{% static 'button.css' %}">
+    <title>Update Course</title>
+</head>
+<style>
+    body {
+      background-image: url("{% static 'img5.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+<body>
+    <nav>
+        <div class="logo">
+            Update Assignment
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a href="{% url 'searchSubject' %}">Subject</a></li>
+            <li><a href="{% url 'list_subject' %}">Course</a></li>
+            <li><a href="{% url 'assignment' %}">New Assignments</a></li>
+            <li><a  class="active" href="{% url 'list_assignment' %}">Assignments Tracking</a></li>
+            <li><a href="{% url 'index' %}">Log Out</a></li>
+         </ul>
+     </nav>
+<br>
+    <form action="save_update_assignment/{{data.id}}" method="post"> 
+        {% csrf_token %}
+        <div class="table-container">
+            <table>
+              <thead>
+            <tr><th>
+        Course Code : <input type="text" name="subjectCode" value="{{data.subjectCode}}" disabled = "False"><br><br>
+        Assignment Name : <input type="text" name="assignName" value="{{data.assignName}}" disabled = "False" ><br><br>
+        <label for="submit">Submit:</label>
+    <select name="submit">
+        <option value="UNSUBMITED" {% if data.submit == 'UNSUBMITED' %}selected{% endif %}>UNSUBMIT</option>
+        <option value="SUBMITED" {% if data.submit == 'SUBMITED' %}selected{% endif %}>SUBMIT</option>
+    </select><br><br>
+    <center><button class="button-64" role="button"><span class="text">Save</span></button><center>
+    </form>
+</th></tr>
+</div>
+</tbody>
+</table>
+
+    <br><br>
+
+</body>
+</html>

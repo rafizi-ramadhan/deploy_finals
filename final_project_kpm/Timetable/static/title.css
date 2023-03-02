@@ -1,0 +1,53 @@
+.title-word {
+    animation: color-animation 4s linear infinite;
+  }
+  
+  .title-word-1 {
+    --color-1: #f8dfd1;
+    --color-2: #286781;
+    --color-3: #d07271;
+  }
+  
+  .title-word-2 {
+    --color-1: #4db4e7;
+    --color-2: #58c0b3;
+    --color-3: #0a2c2f;
+  }
+  
+  .title-word-3 {
+    --color-1: #85c6be;
+    --color-2: #e67472;
+    --color-3: #509089;
+  }
+  
+  .title-word-4 {
+    --color-1: #166181;
+    --color-2: #f7b080;
+    --color-3: #f3a5a4;
+  }
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  /* Here are just some visual styles. 🖌 */
+  
+  .container {
+    display: grid;
+    place-items: center;  
+    text-align: center;
+    height: 10vh
+  }
+  
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 8px;
+    font-size: 26px;
+    text-transform: uppercase;
+  }

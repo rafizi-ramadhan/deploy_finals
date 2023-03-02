@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
+    <title>New Course</title>
+</head>
+<style>
+    body {
+      background-image: url("{% static 'img5.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+<body>
+        <h1>Kolej Profesional MARA Beranang</h1>
+        <p>New Course</p>
+        <nav>
+        <div class="logo">
+            Kolej Profesional MARA Beranang
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a  href="{% url 'searchSubject' %}">Course</a></li>
+            <li><a href="{% url 'list_subject' %}">Subject</a></li>
+            <li><a href="{% url 'assignment' %}">New Assignments</a></li>
+            <li><a class="active" href="{% url 'list_assignment' %}">Assignments Tracking</a></li>
+            <li><a href="{% url 'index' %}">Log Out</a></li>
+         </ul>
+     </nav>
+
+<form action="newSubject" method="post">
+    {% csrf_token %}
+    Subject Code:
+    <input name="c_code">
+    <br><br>
+    Description :
+    <input name="description">
+    <br><br>
+    <input type="submit" value = "SAVE">
+    <br><br>
+    <button><a href ="{% url 'list_subject' %}">List Course</a></button><br><br>
+    <button><a href ="{% url 'searchSubject' %}">Search Course</a></button><br><br>
+    <button><a href="{% url 'index' %}">Home</a></button>
+</form>
+
+<br><br><br>
+{{message}}
+
+<style>
+    body{
+    background-color :bisque;
+    font-size: 24px;}
+</style>
+</body>
+</html>

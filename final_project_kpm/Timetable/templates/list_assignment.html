@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'table.css' %}">
+    <link rel="stylesheet" href="{% static 'nav.css' %}">
+    <link rel="stylesheet" href="{% static 'button.css' %}">
+    <title>List Assignment</title>
+</head>
+<style>
+    body {
+      background-image: url("{% static 'img5.png' %}");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+<body>
+    <nav>
+        <div class="logo">
+            Assignment Tracking
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+            <li><a  href="{% url 'searchSubject' %}">Course</a></li>
+         <li><a href="{% url 'list_subject' %}">Subject</a></li>
+            <li><a href="{% url 'assignment' %}">New Assignments</a></li>
+            <li><a class="active" href="{% url 'list_assignment' %}">Assignments Tracking</a></li>
+            <li><a href="{% url 'index' %}">Log Out</a></li>
+         </ul>
+     </nav>
+     <br>
+     
+    <form action="{% url 'list_assignment' %}" method="get">
+        <center><p style="color:white">SUBJECT :</p>
+        <select name="subjectCode" id="subjectCode">
+            <option value="">Choose subject</option>
+            {% for subject in all_subjects %}
+                <option value="{{subject.subjectCode}}">{{subject.subjectCode}}</option>
+                {% endfor %}
+        </select>
+        <input type="submit" value="SEARCH">
+    </form><center>
+
+    <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th><strong>Assignment ID</strong></th>
+                <th><strong>Subject Code</strong></th>
+                <th><strong>Assignment Name</strong></th>
+                <th><strong>Date Out</strong></th>
+                <th><strong>Date In</strong></th>
+                <th><strong>Submit</strong></th>
+                <th><strong>UPDATE</strong></th>
+                <th><strong>DELETE</strong></th>
+            </tr>
+          </thead>
+    
+          <tbody>
+            {% for assignment in assignments %}
+            <tr>
+                <td>{{ assignment.id }}</td>
+                <td>{{ assignment.subjectCode }}</td>
+                <td>{{ assignment.assignName }}</td>
+                <td>{{ assignment.dateOut }}</td>
+                <td>{{ assignment.dateIn }}</td>
+                <td>{{ assignment.submit }}</td>
+                <td><a href="update_assignment/{{assignment.id}}">update</a></td>
+                <td><a href="delete_assignment/{{assignment.id}}">delete</a></td>
+                </tr>
+            {% endfor %}
+        </table>
+    <br><br>
+    </div>
+</body>
+</html>

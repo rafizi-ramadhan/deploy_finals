@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      {% load static %}
+      <link rel="stylesheet" href="{% static 'nav.css' %}">
+      <link rel="stylesheet" href="{% static 'flip.css' %}">
+      <link rel="stylesheet" href="{% static 'title.css' %}">
+    <title>Assignment Timetable Tracking System</title>
+</head>
+<style>
+   body {
+     background-image: url("{% static 'img5.png' %}");
+     background-repeat: no-repeat;
+     background-size: cover;
+   }
+ </style>
+<body>
+   <nav>
+      <div class="logo">
+         <div class="container">
+            <h2 class="title">
+              <span class="title-word title-word-1">Assignment</span>
+              <span class="title-word title-word-2">Timetable</span>
+              <span class="title-word title-word-3">Tracking</span>
+            </h2>
+          </div>
+      </div>
+      <input type="checkbox" id="click">
+      <label for="click" class="menu-btn">
+      <i class="fas fa-bars"></i>
+      </label>
+      <ul>
+         <li><a class="active" href="{% url 'searchSubject' %}">Course</a></li>
+         <li><a href="{% url 'list_subject' %}">Subject</a></li>
+         <li><a href="{% url 'assignment' %}">New Assignments</a></li>
+         <li><a href="{% url 'list_assignment' %}">Assignments Tracking</a></li>
+         <li><a href="{% url 'index' %}">Log Out</a></li>
+      </ul>
+   </nav>
+   
+   <div class="content">
+    <div>
+      <div class="wrapper">
+        <div class="box">
+           <div class="front-face">
+              <div class="icon">
+                 <i class="fas fa-graduation-cap"></i>
+              </div>
+              <span>Course Details</span>
+           </div>
+           <div class="back-face">
+              <span><a href="{% url 'searchSubject' %}">Course Details</a></span>
+              <p>
+               Search Course Details
+              </p>
+           </div>
+        </div>
+        <div class="box">
+           <div class="front-face">
+              <div class="icon">
+                 <i class="fas fa-book"></i>
+              </div>
+              <span>List Subject</span>
+           </div>
+           <div class="back-face">
+            <span><a href="{% url 'list_subject' %}">List Subject</a></span>
+              <p>
+               Subject Details
+              </p>
+           </div>
+        </div>
+        <div class="box">
+           <div class="front-face">
+              <div class="icon">
+                 <i class="fas fa-plus"></i>
+              </div>
+              <span>New Assignment</span>
+           </div>
+           <div class="back-face">
+            <span><a href="{% url 'assignment' %}">New Assignment</a></span>
+              <p>
+               Add new assignment details
+              </p>
+           </div>
+        </div>
+        <div class="box">
+         <div class="front-face">
+            <div class="icon">
+               <i class="fas fa-search"></i>
+            </div>
+            <span>Assignment Tracking</span>
+         </div>
+         <div class="back-face">
+            <span><a href="{% url 'list_assignment' %}">Track Assignment</a></span>
+            <p>
+               Keep track of your assignments
+            </p>
+         </div>
+      </div>
+     </div>
+    </div>
+ </div>
+
+
+</body>
+</html>

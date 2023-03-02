@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+      <link rel="stylesheet" href="{% static 'dropdown.css' %}">
+      <link rel="stylesheet" href="{% static 'nav.css' %}">
+      <link rel="stylesheet" href="{% static 'table.css' %}">
+      <link rel="stylesheet" href="{% static 'button.css' %}">
+    <title>New Student</title>
+</head>
+<style>
+  body {
+    background-image: url("{% static 'img5.png' %}");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+<body>
+
+    <nav>
+        <div class="logo">
+            New Assignment
+        </div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+        <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+           <li><a  href="{% url 'searchSubject' %}">Course</a></li>
+           <li><a href="{% url 'list_subject' %}">Subject</a></li>
+           <li><a class="active" href="{% url 'assignment' %}">New Assignments</a></li>
+           <li><a href="{% url 'list_assignment' %}">Assignments Tracking</a></li>
+           <li><a href="{% url 'index' %}">Log Out</a></li>
+        </ul>
+     </nav>
+<br>
+<form action="assignment"method="post">
+    {% csrf_token %}
+    <br><br>
+    <div class="table-container">
+        <table>
+          <thead>
+        <tr><th>
+          <br><p style="color:white">Subject Code :
+            <select name="c_subject" required >
+              <option value = "">SELECT ONE</option>
+        {% for value in allsubject %}
+            <option value="{{value.subjectCode}}">{{value.subjectCode}}</option>
+        {% endfor %}
+    </select></center>
+    <br><br>
+    assign Name :
+    <input name="assignName" required>
+    <br><br>
+    Date Out :
+    <input name="dateOut" type=date required>
+    <br><br>
+    Due date :
+    <input name="dateIn" type=date required>
+    <br><br>
+    <label for="submit">Submit:</label><select name="submit" required>
+        <option value="UNSUBMITED" {% if data.submit == 'UNSUBMITED' %}selected{% endif %}>UNSUBMIT</option>
+        <option value="SUBMITED" {% if data.submit == 'SUBMITED' %}selected{% endif %}>SUBMIT</option>
+    </select><br><br>
+    <center><button class="button-64" role="button"><span class="text">Save</span></button><center><br>
+    
+  </th></tr>
+  </div>
+
+</thead>
+</table>
+</form>
+</div><br>
+<center><a href="{% url 'homepage' %}"> <button class="button-64" role="button"><span class="text">HOME</button></a></center>
+
+<script>
+    document.querySelectorAll('.toggle-submit').forEach(button => {
+      button.addEventListener('click', () => {
+        const assignmentId = button.dataset.assignmentId;
+        const currentSubmitValue = button.dataset.submitValue;
+        const newSubmitValue = currentSubmitValue === 'SUBMITTED' ? 'UNSUBMITTED' : 'SUBMITTED';
+  
+        fetch(`/update_assignment/${assignmentId}/toggle_submit/`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': '{{ csrf_token }}'
+          },
+          body: JSON.stringify({
+            submit: newSubmitValue
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          button.innerText = data.new_submit_value;
+          button.dataset.submitValue = data.new_submit_value;
+        })
+        .catch(error => console.error(error));
+      });
+    });
+  </script>
+
+  <script>
+    const form = document.querySelector('form');
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          alert('Form submitted successfully');
+          form.reset();
+        } else {
+          throw new Error('Form submission failed');
+        }
+      })
+      .catch(error => {
+        console.error(error);
+        alert('Form submission failed');
+      });
+    });
+  </script>
+
+</body>
+</html>
